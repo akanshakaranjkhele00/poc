@@ -1,0 +1,29 @@
+.container {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+}
+
+.shopTable {
+  width: 100%;
+}
+
+.shopTable th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+.shopTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.shopTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.shopTable tbody tr:hover {
+  background-color: #e0e0e0;
+}
