@@ -1,8 +1,8 @@
 ---
-- name: Deploy Next.js and Nest.js on Nginx
+- name: Install Node.js and npm on Red Hat-based systems
   hosts: webservers
   become: yes
-  task:
+  tasks:
     - name: Install npm
       yum:
         name: npm
