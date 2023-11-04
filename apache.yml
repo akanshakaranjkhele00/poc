@@ -9,3 +9,8 @@
           - nodejs
           - npm
         state: present
+    - name: Ensure Nginx is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
