@@ -2,20 +2,8 @@
 - name: Deploy Next.js and Nest.js on Nginx
   hosts: webservers
   become: yes
-  tasks:
-        - name: Install npm
-      dnf:
+  task:
+    - name: Install npm
+      yum:
         name: npm
         state: present
-
-    - name: Ensure Nginx is started and enabled
-      service:
-        name: nginx
-        state: started
-        enabled: yes
-
-  handlers:
-    - name: Reload Nginx
-      service:
-        name: nginx
-        state: reloaded
