@@ -3,15 +3,10 @@
   hosts: webservers
   become: yes
   tasks:
-    - name: Install Next.js and Nest.js project dependencies
-      command: npm install
-      args:
-        chdir: /var/www/nextjs
-
-    - name: Build Next.js project
-      command: npm run build
-      args:
-        chdir: /var/www/nextjs
+        - name: Install npm
+      dnf:
+        name: npm
+        state: present
 
     - name: Ensure Nginx is started and enabled
       service:
