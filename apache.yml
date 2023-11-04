@@ -1,14 +1,42 @@
 ---
-- hosts: webservers
-  become: True
+- name: Deploy Next.js and Nest.js on Nginx
+  hosts: webservers
+  become: yes
   tasks:
-    - name: Install packages
-      yum:
-        name: "httpd"
-        state: "present"
-    - name: Start Ngnix server
+    - name: Update APT package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Node.js and npm
+      apt:
+        name:
+          - nodejs
+          - npm
+        state: present
+
+    - name: Clone the Next.js and Nest.js repositories
+      git:
+        repo: https://github.com/akanshakaranjkhele00/poc.git
+        dest: /var/www/nextjs
+
+    - name: Install Next.js and Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs
+
+    - name: Build Next.js project
+      command: npm run build
+      args:
+        chdir: /var/www/nextjs
+
+    - name: Ensure Nginx is started and enabled
       service:
-        name: httpd
+        name: nginx
         state: started
-        enabled: True
-    
+        enabled: yes
+
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
