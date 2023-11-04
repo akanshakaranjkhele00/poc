@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  become: True
+  tasks:
+    - name: Install packages
+      yum:
+        name: "httpd"
+        state: "present"
+    - name: Start Ngnix server
+      service:
+        name: httpd
+        state: started
+        enabled: True
+    
