@@ -2,8 +2,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
+interface ShopItem {
+  orderId: number;
+  product: string;
+  quantity: number;
+  total: number;
+}
+
 const TableDashboard: React.FC = () => {
-  const [shopData, setShopData] = useState([]);
+  const [shopData, setShopData] = useState<ShopItem[]>([]); // Specify the type as ShopItem[]
 
   useEffect(() => {
     // Fetch data from your API endpoint
@@ -14,8 +21,7 @@ const TableDashboard: React.FC = () => {
         }
         return response.json();
       })
-      .then((data) => {
-        // Update the shopData state with the fetched data
+      .then((data: ShopItem[]) => {
         setShopData(data);
       })
       .catch((error) => {
@@ -40,10 +46,10 @@ const TableDashboard: React.FC = () => {
           <tbody>
             {shopData.map((item, index) => (
               <tr key={index}>
-                {/* <td>{item.orderId}</td>
+                <td>{item.orderId}</td>
                 <td>{item.product}</td>
                 <td>{item.quantity}</td>
-                <td>{item.total}</td> */}
+                <td>{item.total}</td>
               </tr>
             ))}
           </tbody>
