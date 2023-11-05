@@ -37,7 +37,7 @@
     - name: Create an Nginx configuration file
       template:
         src: nginx.conf.j2
-        dest: /etc/nginx/conf.d
+        dest: /etc/nginx/conf.d/next.conf
       tags:
         - nginx
     - name: Reload Nginx to apply the new configuration
