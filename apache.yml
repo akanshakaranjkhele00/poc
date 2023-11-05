@@ -14,9 +14,13 @@
         name: nginx
         state: started
         enabled: yes
+    - name: Install Git on CentOS/RHEL
+      become: yes
+      yum:
+        name: git
+        state: present
     - name: Clone the Next.js and Nest.js repositories
       git:
         repo: https://github.com/akanshakaranjkhele00/poc.git
         dest: /var/www/nextjs
       become: yes
-
