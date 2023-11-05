@@ -40,10 +40,10 @@ const TableDashboard: React.FC = () => {
           <tbody>
             {shopData.map((item, index) => (
               <tr key={index}>
-                {/* <td>{item.orderId}</td> */}
+                {/* <td>{item.orderId}</td>
                 <td>{item.product}</td>
                 <td>{item.quantity}</td>
-                <td>{item.total}</td>
+                <td>{item.total}</td> */}
               </tr>
             ))}
           </tbody>
