@@ -3,9 +3,17 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 
+// Define an interface for the product data
+interface Product {
+  name: string;
+  description: string;
+  price: number;
+}
+
 const Product = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("http://localhost:3000/products/%7Bname%7D")
       .then((response) => {
@@ -14,7 +22,7 @@ const Product = () => {
         }
         return response.json();
       })
-      .then((data) => {
+      .then((data: Product[]) => {
         setProducts(data);
         setLoading(false);
       })
@@ -23,6 +31,7 @@ const Product = () => {
         setLoading(false);
       });
   }, []);
+
   return (
     <div className={styles.full}>
       <nav className={styles.navbar}>
