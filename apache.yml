@@ -34,5 +34,3 @@
       become: yes
       args:
         chdir: /var/www/nextjs/Frontend
-        state: directory
-        mode: "0755"
