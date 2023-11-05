@@ -33,3 +33,4 @@
       command: npm run build
       args:
         chdir: /var/www/nextjs/Frontend
+      become: yes
