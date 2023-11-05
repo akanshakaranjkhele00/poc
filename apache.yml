@@ -34,3 +34,15 @@
       become: yes
       args:
         chdir: /var/www/nextjs/Frontend
+    - name: Create an Nginx configuration file
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/conf.d
+      tags:
+        - nginx
+    - name: Reload Nginx to apply the new configuration
+      service:
+        name: nginx
+        state: reloaded
+      tags:
+        - nginx
