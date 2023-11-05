@@ -27,7 +27,9 @@ const Contact = () => {
         />
       </p>
       <div>
-        <h2 className={styles.title2}>We can't solve your problem if you don't tell us about it</h2>
+        <h2 className={styles.title2}>
+          We can't solve your problem if you don't tell us about it
+        </h2>
         <br />
         <br />
         <br />
@@ -60,7 +62,7 @@ const Contact = () => {
           <textarea
             id="message"
             name="message"
-            rows="4"
+            rows={4}
             placeholder="Your Message"
             className={styles.textarea}
           ></textarea>
