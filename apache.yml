@@ -18,5 +18,5 @@
       git:
         repo: https://github.com/akanshakaranjkhele00/poc.git
         dest: /var/www/nextjs
-
+      become: yes
 
