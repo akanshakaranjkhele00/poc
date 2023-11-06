@@ -40,9 +40,9 @@
     #     dest: /etc/nginx/conf.d/next.conf
     #   tags:
     #     - nginx
-    - name: Reload Nginx to apply the new configuration
-      service:
-        name: nginx
-        state: reloaded
-      tags:
-        - nginx
+    # - name: Reload Nginx to apply the new configuration
+    #   service:
+    #     name: nginx
+    #     state: reloaded
+    #   tags:
+    #     - nginx
