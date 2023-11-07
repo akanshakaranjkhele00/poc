@@ -1,6 +1,8 @@
 "use client";
+//require("dotenv").config({ path: "./.env" });
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import process from "process";
 
 interface ShopItem {
   orderId: number;
@@ -10,24 +12,27 @@ interface ShopItem {
 }
 
 const TableDashboard: React.FC = () => {
-  const [shopData, setShopData] = useState<ShopItem[]>([]); // Specify the type as ShopItem[]
-
+  const [shopData, setShopData] = useState<ShopItem[]>([]);
+   const apiKey = process.env.apiKey;
   useEffect(() => {
-    // Fetch data from your API endpoint
-    fetch("http://localhost:3000/")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data: ShopItem[]) => {
-        setShopData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    if (apiKey) {
+      fetch(apiKey)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data: ShopItem[]) => {
+          setShopData(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    } else {
+      console.error("API_BASE_URL is not defined.");
+    }
+  }, [apiKey]);
 
   return (
     <div>

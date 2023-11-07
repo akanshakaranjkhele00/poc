@@ -14,14 +14,13 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  // Define the CORS options
+  
   const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3001', // Specify your frontend domain
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // The HTTP methods to allow
-    credentials: true, // Set this to true if your frontend includes credentials like cookies
+    origin: process.env.NEXT_PUBLIC_API_URL, 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, 
   };
 
-  // Enable CORS with the specified options
   app.enableCors(corsOptions);
 
   await app.listen(3000);

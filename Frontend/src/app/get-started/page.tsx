@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 
-// Define an interface for the product data
 interface Product {
   name: string;
   description: string;
@@ -13,23 +12,27 @@ interface Product {
 const Product = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const productKey = process.env.productKey;
   useEffect(() => {
-    fetch("http://localhost:3000/products/%7Bname%7D")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data: Product[]) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+    if (productKey) {
+      fetch(productKey)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data: Product[]) => {
+          setProducts(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        });
+    } else {
+      console.error("productKey is not defined.");
+    }
   }, []);
 
   return (

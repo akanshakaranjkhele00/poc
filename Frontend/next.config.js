@@ -2,5 +2,8 @@
 const nextConfig = {};
 
 module.exports = {
-  distDir: ".next",
+  env: {
+    apiKey: "http://localhost:3000/",
+    productKey:"http://localhost:3000/products/name",
+  },
 };

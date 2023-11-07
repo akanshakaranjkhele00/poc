@@ -3,17 +3,17 @@
   hosts: webservers
   become: yes
   tasks:
-    - name: Install npm
-      yum:
-        name:
-          - nodejs
-          - npm
-        state: present
-    - name: Ensure Nginx is started and enabled
-      service:
-        name: nginx
-        state: started
-        enabled: yes
+    - name: Install PM2 process manager
+      npm:
+        name: pm2
+        global: yes
+      become: yes
+    # - name: Install npm & nodejs
+    #   yum:
+    #     name:
+    #       - nodejs
+    #       - npm
+    #     state: present
     - name: Install Git on CentOS/RHEL
       become: yes
       yum:
@@ -24,25 +24,36 @@
         repo: https://github.com/akanshakaranjkhele00/poc.git
         dest: /var/www/nextjs
       become: yes
+
+
     - name: Install Next.js and Nest.js project dependencies
       command: npm install
       args:
         chdir: /var/www/nextjs/Frontend
-
     - name: Build Next.js project
       command: npm run build
       become: yes
       args:
         chdir: /var/www/nextjs/Frontend
-    # - name: Create an Nginx configuration file
-    #   template:
-    #     src: nginx.conf.j2
-    #     dest: /etc/nginx/conf.d/next.conf
-    #   tags:
-    #     - nginx
-    # - name: Reload Nginx to apply the new configuration
-    #   service:
-    #     name: nginx
-    #     state: reloaded
-    #   tags:
-    #     - nginx
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Frontend
+
+
+        
+    - name: Install  Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Backend
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
