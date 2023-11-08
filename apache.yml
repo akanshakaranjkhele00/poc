@@ -52,8 +52,6 @@
         chdir: /var/www/nextjs/Backend
     - name: Run Next.js project
       command: npm run start
-      environment:
-        PORT: 4567 # Specify the desired port here
       become: yes
       args:
         chdir: /var/www/nextjs/Backend
