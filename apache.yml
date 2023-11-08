@@ -25,33 +25,36 @@
         dest: /var/www/nextjs
       become: yes
 
-    - name: Install Next.js and Nest.js project dependencies
-      command: npm install
-      args:
-        chdir: /var/www/nextjs/Frontend
-    - name: Build Next.js project
-      command: npm run build
-      become: yes
-      args:
-        chdir: /var/www/nextjs/Frontend
-    - name: Start the Next.js application
-      command: npm run dev
-      args:
-        chdir: /var/www/nextjs/Frontend
-      async: 3600
-      poll: 0
-
-    # - name: Install  Nest.js project dependencies
+    # - name: Install Next.js and Nest.js project dependencies
     #   command: npm install
     #   args:
-    #     chdir: /var/www/nextjs/Backend
-    # - name: Build Nest.js project
+    #     chdir: /var/www/nextjs/Frontend
+    # - name: Build Next.js project
     #   command: npm run build
     #   become: yes
     #   args:
-    #     chdir: /var/www/nextjs/Backend
-    # - name: Run Next.js project
-    #   command: npm run start
-    #   become: yes
+    #     chdir: /var/www/nextjs/Frontend
+    # - name: Start the Next.js application
+    #   command: npm run dev
     #   args:
-    #     chdir: /var/www/nextjs/Backend
+    #     chdir: /var/www/nextjs/Frontend
+    #   async: 3600
+    #   poll: 0
+
+    - name: Install  Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Backend
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+
