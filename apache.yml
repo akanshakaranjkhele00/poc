@@ -30,7 +30,7 @@
       args:
         chdir: /var/www/nextjs/Frontend
     - name: Build Next.js project
-      command: next build
+      command: npm run build
       become: yes
       args:
         chdir: /var/www/nextjs/Frontend
