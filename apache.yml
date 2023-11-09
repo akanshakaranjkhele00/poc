@@ -41,21 +41,21 @@
       async: 3600
       poll: 0
 
-    # - name: Install  Nest.js project dependencies
-    #   command: npm install
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    #   async: 3600
-    #   poll: 0
-    # - name: Build Nest.js project
-    #   command: npm run build
-    #   become: yes
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    # - name: Run Next.js project
-    #   command: npm run start
-    #   become: yes
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    #   async: 3600
-    #   poll: 0
+    - name: Install  Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
