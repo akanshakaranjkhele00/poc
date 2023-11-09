@@ -12,27 +12,23 @@ interface Product {
 const Product = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const productKey = process.env.productKey;
+  //const productKey = process.env.productKey;
   useEffect(() => {
-    if (productKey) {
-      fetch(productKey)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data: Product[]) => {
-          setProducts(data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false);
-        });
-    } else {
-      console.error("productKey is not defined.");
-    }
+    fetch("http://localhost:3000/products/name")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data: Product[]) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
   }, []);
 
   return (

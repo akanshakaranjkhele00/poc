@@ -13,26 +13,22 @@ interface ShopItem {
 
 const TableDashboard: React.FC = () => {
   const [shopData, setShopData] = useState<ShopItem[]>([]);
-   const apiKey = process.env.apiKey;
+  //const apiKey = process.env.apiKey;
   useEffect(() => {
-    if (apiKey) {
-      fetch(apiKey)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data: ShopItem[]) => {
-          setShopData(data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    } else {
-      console.error("API_BASE_URL is not defined.");
-    }
-  }, [apiKey]);
+    fetch("http://localhost:3000/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data: ShopItem[]) => {
+        setShopData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <div>
