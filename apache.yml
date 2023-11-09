@@ -45,6 +45,8 @@
       command: npm install
       args:
         chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
     - name: Build Nest.js project
       command: npm run build
       become: yes
