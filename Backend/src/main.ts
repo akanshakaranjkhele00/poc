@@ -16,7 +16,7 @@ async function bootstrap() {
 
   
   const corsOptions: CorsOptions = {
-    origin: process.env.NEXT_PUBLIC_API_URL, 
+    origin: 'http://localhost:3001', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, 
   };
