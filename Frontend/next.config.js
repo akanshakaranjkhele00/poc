@@ -5,7 +5,7 @@ const nextConfig = {
 
 module.exports = {
   env: {
-    apiKey: "http://localhost:3000/",
-    productKey: "http://localhost:3000/products/name",
+    apiKey: "ec2-user@13.48.104.110:3000/",
+    productKey: "ec2-user@13.48.104.110:3000/products/name",
   },
 };
