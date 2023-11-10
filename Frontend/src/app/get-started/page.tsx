@@ -12,24 +12,33 @@ interface Product {
 const Product = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  //const productKey = process.env.productKey;
+  const productKey = process.env.productKey;
+
   useEffect(() => {
-    fetch("http://localhost:3000/products/name")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+    const fetchData = async () => {
+      try {
+        if (productKey) {
+          const response = await fetch(productKey);
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const data: Product[] = await response.json();
+          setProducts(data);
+          setLoading(false);
+        } else {
+          console.error("productKey is not defined.");
+          setLoading(false);
         }
-        return response.json();
-      })
-      .then((data: Product[]) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [productKey]);
 
   return (
     <div className={styles.full}>
