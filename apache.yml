@@ -68,6 +68,8 @@
       become: yes
       args:
         chdir: /var/www/nextjs/Frontend
+      async: 3600
+      poll: 0
     # - name: sonarqube
     #   run: |
 
