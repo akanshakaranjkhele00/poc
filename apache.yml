@@ -67,7 +67,7 @@
       command: npm run lint
       become: yes
       args:
-        chdir: /var/www/nextjs
+        chdir: /var/www/nextjs/Frontend
     # - name: sonarqube
     #   run: |
 
