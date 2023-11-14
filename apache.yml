@@ -70,13 +70,12 @@
         chdir: /var/www/nextjs/Frontend
       async: 3600
       poll: 0
-    # - name: sonarqube
-    #   run: |
+    - name: sonarqube
+      run: |
 
-    #     npm install -g sonarqube-scanner
-    #     sonar-scanner \
-    #     -Dsonar.host.url="http://51.20.98.83:9000 " \
-    #     -Dsonar.login=admin \
-    #     -Dsonar.password=admin \
-    #     -Dsonar.projectKey="Demo_POC" \
-    #     -Dsonar.source=.
+        npm install -g sonarqube-scanner
+        sonar-scanner \
+        -Dsonar.host.url="http://51.20.98.83:9000 " \
+        -Dsonar.login=14436ad7e02403dff76b06e0ac1f25d5a8859b50
+        -Dsonar.projectKey="Demo_POC" \
+        -Dsonar.source=.
