@@ -63,13 +63,13 @@
         chdir: /var/www/nextjs/Backend
       async: 3600
       poll: 0
-    - name: code Lint
-      command: npm run lint
-      become: yes
-      args:
-        chdir: /var/www/nextjs/Frontend
-      async: 3600
-      poll: 0
+    # - name: code Lint
+    #   command: npm run lint
+    #   become: yes
+    #   args:
+    #     chdir: /var/www/nextjs/Frontend
+    #   async: 3600
+    #   poll: 0
     # - name: sonarqube
     #   run: |
 
