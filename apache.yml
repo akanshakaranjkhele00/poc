@@ -23,6 +23,7 @@
       git:
         repo: https://github.com/akanshakaranjkhele00/poc.git
         dest: /var/www/nextjs
+        force: yes
       become: yes
 
     # - name: Install Next.js and Nest.js project dependencies
