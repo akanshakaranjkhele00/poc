@@ -5,7 +5,7 @@ const nextConfig = {
 
 module.exports = {
   env: {
-    apiKey: "http://13.51.174.136:3000/",
-    productKey: "http://13.51.174.136:3000/products/name",
+    apiKey: "http://16.170.143.161:3000/",
+    productKey: "http://16.170.143.161:3000/products/name",
   },
 };
