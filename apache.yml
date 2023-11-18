@@ -26,44 +26,44 @@
         force: yes
       become: yes
 
-    # - name: Install Next.js and Nest.js project dependencies
-    #   command: npm install
-    #   args:
-    #     chdir: /var/www/nextjs/Frontend
-    # - name: Build Next.js project
-    #   command: npm run build
-    #   become: yes
-    #   args:
-    #     chdir: /var/www/nextjs/Frontend
-    #   async: 3600
-    #   poll: 0
-    # - name: Start the Next.js application
-    #   command: npm run dev
-    #   args:
-    #     chdir: /var/www/nextjs/Frontend
-    #   async: 3600
-    #   poll: 0
+    - name: Install Next.js and Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Frontend
+    - name: Build Next.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Frontend
+      async: 3600
+      poll: 0
+    - name: Start the Next.js application
+      command: npm run dev
+      args:
+        chdir: /var/www/nextjs/Frontend
+      async: 3600
+      poll: 0
 
-    # - name: Install  Nest.js project dependencies
-    #   command: npm install
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    #   async: 3600
-    #   poll: 0
-    # - name: Build Nest.js project
-    #   command: npm run build
-    #   become: yes
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    #   async: 3600
-    #   poll: 0
-    # - name: Run Next.js project
-    #   command: npm run start
-    #   become: yes
-    #   args:
-    #     chdir: /var/www/nextjs/Backend
-    #   async: 3600
-    #   poll: 0
+    - name: Install  Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
     # - name: code Lint
     #   command: npm run lint
     #   become: yes
