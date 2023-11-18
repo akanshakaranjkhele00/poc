@@ -1,3 +1,2 @@
 [webservers]
 13.51.174.136 ansible_user=ec2-user 
-13.53.173.110 jenkins_user=ec2-user
