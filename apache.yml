@@ -64,11 +64,18 @@
         chdir: /var/www/nextjs/Backend
       async: 3600
       poll: 0
-    - name: Configure npm Registry for Nexus(Backend)
-      command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
-      become: true
-      args:
-        chdir: /var/www/nextjs/Backend
+    # - name: Run on EC2 instance
+    #   command: npm run start
+    #   become: yes
+    #   args:
+    #     chdir: /var/lib/jenkins/workspace/demo_learning
+    #   async: 3600
+    #   poll: 0
+    # - name: Configure npm Registry for Nexus(Backend)
+    #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
+    #   become: true
+    #   args:
+    #     chdir: /var/www/nextjs/Backend
 
     # - name: Login to Nexus Repository(Backend)
     #   command: npm login --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
@@ -81,11 +88,11 @@
     #   ignore_errors: yes
 
 
-    - name: Publish Next.js Package(Backend)
-      command: npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
-      become: true
-      args:
-        chdir: /var/www/nextjs/Backend
+    # - name: Publish Next.js Package(Backend)
+    #   command: npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
+    #   become: true
+    #   args:
+    #     chdir: /var/www/nextjs/Backend
 
     # - name: Configure npm Registry for Nexus for (Frontend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
