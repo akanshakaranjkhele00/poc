@@ -1,6 +1,6 @@
 ---
 - name: Deploy Artifact from Nexus to Nginx
-  hosts: webservers
+  hosts: 51.20.254.144
   become: yes
   tasks:
     - name: Download artifact from Nexus(Backend)
