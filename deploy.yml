@@ -19,12 +19,15 @@
       become: yes
 
 
-    - name: Extract Tar Archive
-      ansible.builtin.unarchive:
-       src: "/var/artifact"
-       dest: "/var/artifact"
-       remote_src: yes
-       extra_opts: "--gzip --extract --file"
+    - name: Extract the tgz file
+      ansible.builtin.shell:
+        cmd: "tar -xvzf /var/artifact/microservice-0.0.1.tgz -C /var/artifact"
+    # - name: Extract Tar Archive
+    #   ansible.builtin.unarchive:
+    #    src: "/var/artifact"
+    #    dest: "/var/artifact"
+    #    remote_src: yes
+    #    extra_opts: "--gzip --extract --file"
 
     # - name: Copy artifact to Nginx directory
     #   ansible.builtin.copy:
