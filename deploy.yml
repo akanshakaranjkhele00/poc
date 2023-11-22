@@ -3,6 +3,9 @@
   hosts: webservers
   become: yes
   tasks:
+    - name: Set SSH options for this playbook
+      set_fact:
+        ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
     - name: Download artifact from Nexus(Backend)
       get_url:
         url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/poc_final/-/poc_final-0.1.0.tgz"
