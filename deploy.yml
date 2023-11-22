@@ -26,17 +26,18 @@
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/poc_final-0.1.0.tgz -C /var/artifact/pack"
 
-    - name: Add environment variables to your Next.js application's environment file
-      lineinfile:
+    - name: Replace apiKey in next.config.js
+      ansible.builtin.lineinfile:
         path: /var/artifact/pack/package/next.config.js
-        line: "apiKey=http://51.20.254.144:3000/"
+        regexp: '^\\s*apiKey:\\s*'
+        line: '    apiKey: "http://51.20.254.144:3000/",'
 
-    - name: Add environment variables to your Next.js application's environment file
-      lineinfile:
+    - name: Replace productKey in next.config.js
+      ansible.builtin.lineinfile:
         path: /var/artifact/pack/package/next.config.js
-        line: "productKey=http://51.20.254.144:3000/products/name"
+        regexp: '^\\s*productKey:\\s*'
+        line: '    productKey: "http://51.20.254.144:3000/products/name",'
 
-        
 
 
    
