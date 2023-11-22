@@ -43,13 +43,21 @@
         remote_src: yes
         backup: yes
 
-    - name: Copy artifact to Nginx directory
-      ansible.builtin.copy:
-        src: "/var/artifact/pack"
-        dest: "/usr/share/nginx/html/"
-        remote_src: yes
+    - name: Run  project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/artifact/pack/package
+      async: 3600
+      poll: 0
 
-    - name: Restart Nginx
-      systemd:
-        name: nginx
-        state: restarted
+    # - name: Copy artifact to Nginx directory
+    #   ansible.builtin.copy:
+    #     src: "/var/artifact/pack"
+    #     dest: "/usr/share/nginx/html/"
+    #     remote_src: yes
+
+    # - name: Restart Nginx
+    #   systemd:
+    #     name: nginx
+    #     state: restarted
