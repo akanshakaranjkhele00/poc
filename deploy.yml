@@ -24,7 +24,7 @@
        src: "/var/artifact"
        dest: "/var/artifact"
        remote_src: yes
-       extra_opts: "--gzip-command=/usr/bin/gzip --tar-command=/usr/bin/tar"
+       extra_opts: "--gzip --extract --file"
 
     # - name: Copy artifact to Nginx directory
     #   ansible.builtin.copy:
