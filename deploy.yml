@@ -25,6 +25,20 @@
     - name: Extract the tgz file
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/poc_final-0.1.0.tgz -C /var/artifact/pack"
+
+    - name: Add environment variables to your Next.js application's environment file
+      lineinfile:
+        path: /var/artifact/pack/package/next.config.js
+        line: "apiKey=http://51.20.254.144:3000/"
+
+    - name: Add environment variables to your Next.js application's environment file
+      lineinfile:
+        path: /var/artifact/pack/package/next.config.js
+        line: "productKey=http://51.20.254.144:3000/products/name"
+
+        
+
+
    
 
     - name: Copy artifact to Nginx directory
