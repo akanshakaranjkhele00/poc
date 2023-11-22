@@ -19,11 +19,12 @@
       become: yes
 
 
-    - name: Unzip the artifact
+    - name: Extract Tar Archive
       ansible.builtin.unarchive:
-        src: "/var/artifact"
-        dest: "/var/artifact"
-        remote_src: yes
+       src: "/var/artifact"
+       dest: "/var/artifact"
+       remote_src: yes
+       extra_opts: "--gzip"
 
     # - name: Copy artifact to Nginx directory
     #   ansible.builtin.copy:
