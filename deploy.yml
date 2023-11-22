@@ -42,6 +42,13 @@
         dest: /var/artifact/pack/package/next.config.js
         remote_src: yes
         backup: yes
+    - name: Build  project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/artifact/pack/package
+      async: 3600
+      poll: 0
 
     - name: Run  project
       command: npm run start
