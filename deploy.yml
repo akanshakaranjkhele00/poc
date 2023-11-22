@@ -1,0 +1,36 @@
+---
+- name: Deploy Artifact from Nexus to Nginx
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: Download artifact from Nexus(Backend)
+      get_url:
+        url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/poc_final/-/poc_final-0.1.0.tgz"
+        dest: "/var/artifact"
+        force: yes
+      become: yes
+      
+    - name: Download artifact from Nexus(Frontend)
+      get_url:
+        url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/microservice/-/microservice-0.0.1.tgz"
+        dest: "/var/artifact"
+        force: yes
+      become: yes
+
+
+    # - name: Unzip the artifact
+    #   ansible.builtin.unarchive:
+    #     src: "/var/artifact"
+    #     dest: "/path/to/your/artifact/directory/"
+    #     remote_src: yes
+
+    # - name: Copy artifact to Nginx directory
+    #   ansible.builtin.copy:
+    #     src: "/path/to/your/artifact/directory/your_artifact_files"
+    #     dest: "/usr/share/nginx/html/"
+    #     remote_src: yes
+
+    # - name: Restart Nginx
+    #   systemd:
+    #     name: nginx
+    #     state: restarted
