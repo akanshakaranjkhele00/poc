@@ -21,21 +21,19 @@
 
     - name: Extract the tgz file
       ansible.builtin.shell:
-        cmd: "tar -xvzf /var/artifact/microservice-0.0.1.tgz -C /var/artifact"
-    # - name: Extract Tar Archive
-    #   ansible.builtin.unarchive:
-    #    src: "/var/artifact"
-    #    dest: "/var/artifact"
-    #    remote_src: yes
-    #    extra_opts: "--gzip --extract --file"
+        cmd: "tar -xvzf /var/artifact/microservice-0.0.1.tgz -C /var/artifact/pack"
+    - name: Extract the tgz file
+      ansible.builtin.shell:
+        cmd: "tar -xvzf /var/artifact/poc_final-0.1.0.tgz -C /var/artifact/pack"
+   
 
-    # - name: Copy artifact to Nginx directory
-    #   ansible.builtin.copy:
-    #     src: "/path/to/your/artifact/directory/your_artifact_files"
-    #     dest: "/usr/share/nginx/html/"
-    #     remote_src: yes
+    - name: Copy artifact to Nginx directory
+      ansible.builtin.copy:
+        src: "/var/artifact/pack"
+        dest: "/usr/share/nginx/html/"
+        remote_src: yes
 
-    # - name: Restart Nginx
-    #   systemd:
-    #     name: nginx
-    #     state: restarted
+    - name: Restart Nginx
+      systemd:
+        name: nginx
+        state: restarted
