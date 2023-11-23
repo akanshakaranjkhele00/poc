@@ -5,24 +5,24 @@
   tasks:
     - name: Download artifact from Nexus(Backend)
       get_url:
-        url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/poc_final/-/poc_final-0.1.0.tgz"
+        url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/dist/-/dist-1.0.0.tgz"
         dest: "/var/artifact"
         force: yes
       become: yes
 
-    - name: Download artifact from Nexus(Frontend)
-      get_url:
-        url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/microservice/-/microservice-0.0.1.tgz"
-        dest: "/var/artifact"
-        force: yes
-      become: yes
+    # - name: Download artifact from Nexus(Frontend)
+    #   get_url:
+    #     url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/microservice/-/microservice-0.0.1.tgz"
+    #     dest: "/var/artifact"
+    #     force: yes
+    #   become: yes
 
-    - name: Extract the tgz file
-      ansible.builtin.shell:
-        cmd: "tar -xvzf /var/artifact/microservice-0.0.1.tgz -C /var/artifact/pack"
-    - name: Extract the tgz file
-      ansible.builtin.shell:
-        cmd: "tar -xvzf /var/artifact/poc_final-0.1.0.tgz -C /var/artifact/pack"
+    # - name: Extract the tgz file
+    #   ansible.builtin.shell:
+    #     cmd: "tar -xvzf /var/artifact/microservice-0.0.1.tgz -C /var/artifact/pack"
+    # - name: Extract the tgz file
+    #   ansible.builtin.shell:
+    #     cmd: "tar -xvzf /var/artifact/poc_final-0.1.0.tgz -C /var/artifact/pack"
 
     # - name: Replace apiKey in next.config.js
     #   ansible.builtin.lineinfile:
