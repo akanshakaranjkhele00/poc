@@ -41,7 +41,46 @@
         src: /var/artifact/next.config.js
         dest: /var/artifact/frontend/package/next.config.js
         remote_src: yes
-        
+
+    - name: Install Next.js 
+      command: npm install
+      args:
+        chdir: /var/artifact/frontend/package
+    - name: Build Next.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/artifact/frontend/package
+      async: 3600
+      poll: 0
+    - name: Start the Next.js application
+      command: npm run dev
+      args:
+        chdir: /var/artifact/frontend/package
+      async: 3600
+      poll: 0
+
+    - name: Install  Nest.js 
+      command: npm install
+      args:
+        chdir: /var/artifact/backend/package
+      async: 3600
+      poll: 0
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/artifact/backend/package
+      async: 3600
+      poll: 0
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/artifact/backend/package
+      async: 3600
+      poll: 0
+
     # - name: Build  project
     #   command: npm run build
     #   become: yes
