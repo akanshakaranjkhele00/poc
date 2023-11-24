@@ -29,18 +29,6 @@
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/backend/dist-1.0.0.tgz -C /var/artifact/backend"
 
-    # - name: Replace apiKey in next.config.js
-    #   ansible.builtin.lineinfile:
-    #     path: /var/artifact/pack/package/next.config.js
-    #     regexp: '^\\s*apiKey:\\s*'
-    #     line: '    apiKey: "http://51.20.254.144:3000/",'
-
-    # - name: Replace productKey in next.config.js
-    #   ansible.builtin.lineinfile:
-    #     path: /var/artifact/pack/package/next.config.js
-    #     regexp: '^\\s*productKey:\\s*'
-    #     line: '    productKey: "http://51.20.254.144:3000/products/name",'
-
     - name: Copy the new file to the target folder
       ansible.builtin.copy:
         src: /var/artifact/next.config.js
