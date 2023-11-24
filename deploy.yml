@@ -36,12 +36,12 @@
     #     regexp: '^\\s*productKey:\\s*'
     #     line: '    productKey: "http://51.20.254.144:3000/products/name",'
 
-    # - name: Copy the new file to the target folder
-    #   ansible.builtin.copy:
-    #     src: /var/artifact/next.config.js
-    #     dest: /var/artifact/pack/package/next.config.js
-    #     remote_src: yes
-    #     backup: yes
+    - name: Copy the new file to the target folder
+      ansible.builtin.copy:
+        src: /var/artifact/next.config.js
+        dest: /var/artifact/frontend/package/next.config.js
+        remote_src: yes
+        
     # - name: Build  project
     #   command: npm run build
     #   become: yes
