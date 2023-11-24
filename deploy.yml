@@ -109,13 +109,13 @@
     #   async: 3600
     #   poll: 0
 
-    - name: Copy artifact to Nginx directory
-      ansible.builtin.copy:
-        src: "/var/artifact/frontend"
-        dest: "/usr/share/nginx/html/"
-        remote_src: yes
+    # - name: Copy artifact to Nginx directory
+    #   ansible.builtin.copy:
+    #     src: "/var/artifact/frontend"
+    #     dest: "/usr/share/nginx/html/"
+    #     remote_src: yes
 
-    - name: Restart Nginx
-      systemd:
-        name: nginx
-        state: restarted
+    # - name: Restart Nginx
+    #   systemd:
+    #     name: nginx
+    #     state: restarted
