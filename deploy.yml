@@ -3,6 +3,11 @@
   hosts: webservers
   become: yes
   tasks:
+    - name: Install PM2 process manager
+      npm:
+        name: pm2
+        global: yes
+      become: yes
     - name: Download artifact from Nexus(Backend)
       get_url:
         url: "http://51.20.74.221:8081/repository/myorg-npm-group-repo/dist/-/dist-1.0.0.tgz"
@@ -41,6 +46,13 @@
         src: /var/artifact/next.config.js
         dest: /var/artifact/frontend/package/next.config.js
         remote_src: yes
+
+    - name: Set permissions on Frontend directory
+      command: sudo chmod 777 /var/artifact/frontend/package
+      become: yes
+    - name: Set permissions on Backend directory
+      command: sudo chmod 777 /var/artifact/backend/package
+      become: yes
 
     - name: Install Next.js 
       command: npm install
