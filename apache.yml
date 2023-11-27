@@ -102,7 +102,7 @@
 
     - name: Run npm init
       expect:
-        command: sudo npm init 
+        command: sudo npm init -y
         responses:
           "name*": "front"
           "description*": "frontend"
