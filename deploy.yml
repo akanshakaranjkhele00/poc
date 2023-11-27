@@ -81,29 +81,4 @@
       async: 3600
       poll: 0
 
-    # - name: Build  project
-    #   command: npm run build
-    #   become: yes
-    #   args:
-    #     chdir: /var/artifact/pack/package
-    #   async: 3600
-    #   poll: 0
-
-    # - name: Run  project
-    #   command: npm run start
-    #   become: yes
-    #   args:
-    #     chdir: /var/artifact/pack/package
-    #   async: 3600
-    #   poll: 0
-
-    # - name: Copy artifact to Nginx directory
-    #   ansible.builtin.copy:
-    #     src: "/var/artifact/frontend"
-    #     dest: "/usr/share/nginx/html/"
-    #     remote_src: yes
-
-    # - name: Restart Nginx
-    #   systemd:
-    #     name: nginx
-    #     state: restarted
+    

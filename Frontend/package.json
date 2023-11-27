@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "publishConfig": {
-    "registry": "http://51.20.74.221:8081/repository/myorg-npm-hosted-repo"
+    "registry": "http://51.20.74.221:8081/repository/myorg-npm-group-repo/ "
   },
   "dependencies": {
     "react": "^18",
