@@ -76,6 +76,27 @@
       args:
         chdir: /var/www/nextjs/Backend/dist
 
+    - name: Modify package.json
+      ansible.builtin.replace:
+      path: /var/www/nextjs/Backend/dist/package.json
+      regexp: '"description": ""'
+      replace: |
+      
+      
+
+  "name": "front",
+  "version": "1.0.0",
+  "main": "prerender-manifest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+
+
+      
+
     - name: Configure npm Registry for Nexus(Backend)
       command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
       become: true
