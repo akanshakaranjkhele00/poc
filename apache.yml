@@ -98,25 +98,19 @@
       args:
         chdir: /var/www/nextjs/Backend/dist
 
-    - name: Run npm init
-      expect:
-        command: sudo npm init -y
-        responses:
-          "name*": "front"
-          "description*": "frontend"
-          "version*": "1.0.0"
-          "main*": "prerender-manifest.js"
-          "test*": 'echo "Error: no test specified" && exit 1'
-          "author*": ""
-          "license*": "ISC"
+    - name: npm init
+      command: sudo npm init -y
+      become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
+
 
     - name: Configure npm Registry for Nexus for (Frontend)
       command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
       become: true
       args:
-        chdir: /var/www/nextjs/Frontend
+        chdir: /var/www/nextjs/Frontend/.next
+
 
     - name: Publish Next.js Package(Frontend)
       command: npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
