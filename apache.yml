@@ -101,7 +101,7 @@
 
 
     - name: npm init 
-      command: sudo npm init -y --name create-frontend
+      command: sudo npm init -y
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
@@ -110,7 +110,7 @@
       command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
       become: true
       args:
-        chdir: /var/www/nextjs/Frontend/.next
+        chdir: /var/www/nextjs/Frontend
 
 
     - name: Publish Next.js Package(Frontend)
