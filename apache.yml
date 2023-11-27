@@ -100,9 +100,17 @@
 
 
 
-    - name: npm init 
-      command: sudo npm init -y
-      become: true
+    - name: Run npm init
+      expect:
+        command: sudo npm init 
+        responses:
+          "name*": "front"
+          "description*": "frontend"
+          "version*": "1.0.0"
+          "main*": "prerender-manifest.js"
+          "test*": "echo \"Error: no test specified\" && exit 1"
+          "author*": ""
+          "license*": "ISC"
       args:
         chdir: /var/www/nextjs/Frontend/.next
 
