@@ -101,7 +101,7 @@
 
 
     - name: npm init 
-      command: sudo npm init -y
+      command: sudo npm init -y --name "first"
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
