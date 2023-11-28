@@ -146,3 +146,9 @@
       become: true
       args:
         chdir: /var/www/nextjs/Backend/dist
+
+    - name: Publish Next.js Package(Backend)
+      command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
+      become: true
+      args:
+        chdir: /var/www/nextjs/Backend/dist
