@@ -70,11 +70,11 @@
       async: 3600
       poll: 0
 
-    - name: npm init(Backend)
-      command: sudo npm init -y
-      become: true
-      args:
-        chdir: /var/www/nextjs/Backend/dist
+    # - name: npm init(Backend)
+    #   command: sudo npm init -y
+    #   become: true
+    #   args:
+    #     chdir: /var/www/nextjs/Backend/dist
         
     # - name: Configure npm Registry for Nexus(Backend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
@@ -92,11 +92,11 @@
     #     NPM_CONFIG_REGISTRY_PASSWORD: "Admin@123"
     #   ignore_errors: yes
 
-    - name: Publish Next.js Package(Backend)
-      command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
-      become: true
-      args:
-        chdir: /var/www/nextjs/Backend/dist
+    # - name: Publish Next.js Package(Backend)
+    #   command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
+    #   become: true
+    #   args:
+    #     chdir: /var/www/nextjs/Backend/dist
 
     - name: npm init(Frontend)
       command: sudo npm init -y
