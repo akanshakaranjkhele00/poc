@@ -99,10 +99,17 @@
         chdir: /var/www/nextjs/Backend/dist
 
     - name: npm init(Frontend)
-      command: sudo npm init -y 
+      command: sudo npm init  
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
+
+    - name: copy package .json file
+      copy: 
+         src: /home/ec2-user/package.json
+         dest: /var/www/nextjs/Frontend/.next/package.json
+
+
 
     # - name: create file and add line
     #   lineinfile:
@@ -111,12 +118,13 @@
     #             "version": "1.0.0",
     #      state: present
     #      create: true
-    - name: Replace value in file
-      lineinfile:
-        path: /var/www/nextjs/Frontend/.next/package.json
-        regexp: '^{{item.key}}:'
-        line: "{{item.key}}: {{item.value}}"
-      with_dict: {"name": "frontend", "version": "1.0.0",}
+    # - name: Replace value in file
+    #   lineinfile:
+    #     path: /var/www/nextjs/Frontend/.next/package.json
+    #     regexp: '^{{item.key}}:'
+    #     line: "{{item.key}}: {{item.value}}"
+    #   with_dict: {"name": "frontend", "version": "1.0.0",}
+
 
     # - name: Configure npm Registry for Nexus for (Frontend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
