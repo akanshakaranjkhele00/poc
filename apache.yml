@@ -99,22 +99,18 @@
         chdir: /var/www/nextjs/Backend/dist
 
     - name: npm init(Frontend)
-      expect:
-        command: npm init 
-        responses:
-          '(name)': 'frontend'
-          '(version)': '1.0.0'
-          '(description)': 'Your Backend project description'
-          '(entry point)': 'index.js'
-          '(test command)': 'npm test'
-          '(repository)': 'git://github.com/yourusername/yourbackendproject.git'
-          '(keywords)': 'backend, keyword2'
-          '(author)': 'Your Name'
-          '(license)': 'MIT'
+      command: sudo npm init 
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
 
+    - name: create file and add line
+      lineinfile:
+         path: /var/www/nextjs/Frontend/.next/package.json
+         line: "name": "frontend",
+                "version": "1.0.0",
+         state: present
+         create: true
 
     # - name: Configure npm Registry for Nexus for (Frontend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
@@ -127,4 +123,3 @@
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
-
