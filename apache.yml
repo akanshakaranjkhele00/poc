@@ -104,13 +104,19 @@
       args:
         chdir: /var/www/nextjs/Frontend/.next
 
-    - name: create file and add line
+    # - name: create file and add line
+    #   lineinfile:
+    #      path: /var/www/nextjs/Frontend/.next/package.json
+    #      line: "name": "frontend",
+    #             "version": "1.0.0",
+    #      state: present
+    #      create: true
+    - name: Replace value in file
       lineinfile:
-         path: /var/www/nextjs/Frontend/.next/package.json
-         line: "name": "frontend",
-                "version": "1.0.0",
-         state: present
-         create: true
+        path: /var/www/nextjs/Frontend/.next/package.json
+        regexp: '^{{item.key}}:'
+        line: "{{item.key}}: {{item.value}}"
+      with_dict: {"name": "frontend", "version": "1.0.0",}
 
     # - name: Configure npm Registry for Nexus for (Frontend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
