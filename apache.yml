@@ -106,7 +106,7 @@
 
     - name: copy package .json file
       copy: 
-         src: /home/ec2-user/package.json
+         src: /var/www/nextjs/package.json
          dest: /var/www/nextjs/Frontend/.next/package.json
 
 
