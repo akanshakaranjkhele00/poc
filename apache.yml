@@ -99,7 +99,7 @@
         chdir: /var/www/nextjs/Backend/dist
 
     - name: npm init(Frontend)
-      command: sudo npm init 
+      command: sudo npm init -y 
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
