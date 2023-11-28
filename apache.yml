@@ -140,3 +140,9 @@
       become: true
       args:
         chdir: /var/www/nextjs/Frontend/.next
+
+    - name: npm init(Backend)
+      command: sudo npm init -y
+      become: true
+      args:
+        chdir: /var/www/nextjs/Backend/dist
