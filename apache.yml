@@ -75,9 +75,7 @@
       become: true
       args:
         chdir: /var/www/nextjs/Backend/dist
-        state: directory
-        mode: '0755'
-
+        
     # - name: Configure npm Registry for Nexus(Backend)
     #   command: npm config set registry http://51.20.74.221:8081/repository/myorg-npm-group-repo/ -L project
     #   become: true
