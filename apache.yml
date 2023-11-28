@@ -105,9 +105,15 @@
         chdir: /var/www/nextjs/Frontend/.next
 
     - name: copy package .json file
-      copy: 
-         src: /var/www/nextjs/package.json
-         dest: /var/www/nextjs/Frontend/.next/package.json
+      ansible.builtin.copy:
+        src: /var/www/nextjs/package.json
+        dest: /var/www/nextjs/Frontend/.next/package.json
+        remote_src: yes
+
+    # - name: copy package .json file
+    #   copy: 
+    #      src: /var/www/nextjs/package.json
+    #      dest: /var/www/nextjs/Frontend/.next/package.json
 
 
 
