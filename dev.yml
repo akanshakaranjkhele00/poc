@@ -8,3 +8,9 @@
         name: pm2
         global: yes
       become: yes
+    - name: Download artifact from Nexus(Backend)
+      get_url:
+        url: "http://51.20.74.221:8081/repository/myorg-raw-hosted-repo/app.tar.gz"
+        dest: "/var/artifact"
+        force: yes
+      become: yes
