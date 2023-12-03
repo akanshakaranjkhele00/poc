@@ -1,5 +1,5 @@
 ---
-- name: Deploy Artifact from Nexus to dev
+- name: Deploy Artifact from Nexus to d
   hosts: webservers
   become: yes
   tasks:
