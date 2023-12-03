@@ -17,3 +17,20 @@
     - name: Extract the tgz file
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
+    - name: Install Dependency for Next.js 
+      command: npm install
+      args:
+        chdir: /var/artifact/Frontend
+    - name: Build Next.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/artifact/Frontend
+      async: 3600
+      poll: 0
+    - name: Start the Next.js application
+      command: npm run dev
+      args:
+        chdir: /var/artifact/Frontend
+      async: 3600
+      poll: 0
