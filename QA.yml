@@ -9,58 +9,58 @@
         name: pm2
         global: yes
       become: yes
-    - name: Download artifact from Nexus(Backend)
-      get_url:
-        url: "http://51.20.74.221:8081/repository/myorg-raw-hosted-repo/app.tar.gz"
-        dest: "/var/artifact"
-        force: yes
-      become: yes
-    - name: Extract the tgz file
-      ansible.builtin.shell:
-        cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
-    - name: Set permissions on Frontend directory
-      command: sudo chmod 777 /var/artifact/poc/Frontend
-      become: yes
-    - name: Set permissions on Frontend directory
-      command: sudo chmod 777 /var/artifact/poc/Backend
-      become: yes
-    - name: Install Dependency for Next.js 
-      command: sudo npm install
-      args:
-        chdir: /var/artifact/poc/Frontend
-    - name: Build Next.js project
-      command: sudo npm run build
-      become: yes
-      args:
-        chdir: /var/artifact/poc/Frontend
-      async: 3600
-      poll: 0
-    - name: Start the Next.js application
-      command: sudo npm run dev
-      args:
-        chdir: /var/artifact/poc/Frontend
-      async: 3600
-      poll: 0
+    # - name: Download artifact from Nexus(Backend)
+    #   get_url:
+    #     url: "http://51.20.74.221:8081/repository/myorg-raw-hosted-repo/app.tar.gz"
+    #     dest: "/var/artifact"
+    #     force: yes
+    #   become: yes
+    # - name: Extract the tgz file
+    #   ansible.builtin.shell:
+    #     cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
+    # - name: Set permissions on Frontend directory
+    #   command: sudo chmod 777 /var/artifact/poc/Frontend
+    #   become: yes
+    # - name: Set permissions on Frontend directory
+    #   command: sudo chmod 777 /var/artifact/poc/Backend
+    #   become: yes
+    # - name: Install Dependency for Next.js 
+    #   command: sudo npm install
+    #   args:
+    #     chdir: /var/artifact/poc/Frontend
+    # - name: Build Next.js project
+    #   command: sudo npm run build
+    #   become: yes
+    #   args:
+    #     chdir: /var/artifact/poc/Frontend
+    #   async: 3600
+    #   poll: 0
+    # - name: Start the Next.js application
+    #   command: sudo npm run dev
+    #   args:
+    #     chdir: /var/artifact/poc/Frontend
+    #   async: 3600
+    #   poll: 0
 
       
-    - name: Install Dependency for Nest.js 
-      command: npm install
-      args:
-        chdir: /var/artifact/poc/Backend
-      async: 3600
-      poll: 0
-    - name: Build Nest.js project
-      command: npm run build
-      become: yes
-      args:
-        chdir: /var/artifact/poc/Backend
-      async: 3600
-      poll: 0
-    - name: Run Next.js project
-      command: npm run start
-      become: yes
-      args:
-        chdir: /var/artifact/poc/Backend
-      async: 3600
-      poll: 0
+    # - name: Install Dependency for Nest.js 
+    #   command: npm install
+    #   args:
+    #     chdir: /var/artifact/poc/Backend
+    #   async: 3600
+    #   poll: 0
+    # - name: Build Nest.js project
+    #   command: npm run build
+    #   become: yes
+    #   args:
+    #     chdir: /var/artifact/poc/Backend
+    #   async: 3600
+    #   poll: 0
+    # - name: Run Next.js project
+    #   command: npm run start
+    #   become: yes
+    #   args:
+    #     chdir: /var/artifact/poc/Backend
+    #   async: 3600
+    #   poll: 0
 
