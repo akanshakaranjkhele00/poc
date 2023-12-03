@@ -18,25 +18,25 @@
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
     - name: Set permissions on Frontend directory
-      command: sudo chmod 777 /var/artifact/Frontend
+      command: sudo chmod 777 /var/artifact/poc/Frontend
       become: yes
-    - name: Set permissions on Frontend directory
-      command: sudo chmod 777 /var/artifact/Backend
-      become: yes
+    # - name: Set permissions on Frontend directory
+    #   command: sudo chmod 777 /var/artifact/Backend
+    #   become: yes
     - name: Install Dependency for Next.js 
       command: sudo npm install
       args:
-        chdir: /var/artifact/Frontend
+        chdir: /var/artifact/poc/Frontend
     - name: Build Next.js project
       command: sudo npm run build
       become: yes
       args:
-        chdir: /var/artifact/Frontend
+        chdir: /var/artifact/poc/Frontend
       async: 3600
       poll: 0
     - name: Start the Next.js application
       command: sudo npm run dev
       args:
-        chdir: /var/artifact/Frontend
+        chdir: /var/artifact/poc/Frontend
       async: 3600
       poll: 0
