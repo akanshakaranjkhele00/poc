@@ -17,6 +17,12 @@
     - name: Extract the tgz file
       ansible.builtin.shell:
         cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
+    - name: Set permissions on Frontend directory
+      command: sudo chmod 777 /var/artifact/Frontend
+      become: yes
+    - name: Set permissions on Frontend directory
+      command: sudo chmod 777 /var/artifact/Backend
+      become: yes
     - name: Install Dependency for Next.js 
       command: npm install
       args:
