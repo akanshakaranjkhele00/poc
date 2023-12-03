@@ -16,4 +16,4 @@
       become: yes
     - name: Extract the tgz file
       ansible.builtin.shell:
-        cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact"
+        cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
