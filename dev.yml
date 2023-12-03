@@ -24,18 +24,18 @@
       command: sudo chmod 777 /var/artifact/Backend
       become: yes
     - name: Install Dependency for Next.js 
-      command: npm install
+      command: sudo npm install
       args:
         chdir: /var/artifact/Frontend
     - name: Build Next.js project
-      command: npm run build
+      command: sudo npm run build
       become: yes
       args:
         chdir: /var/artifact/Frontend
       async: 3600
       poll: 0
     - name: Start the Next.js application
-      command: npm run dev
+      command: sudo npm run dev
       args:
         chdir: /var/artifact/Frontend
       async: 3600
