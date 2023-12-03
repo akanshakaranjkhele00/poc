@@ -1,6 +1,6 @@
 ---
 - name: Deploy Artifact from Nexus to QA
-  hosts: webservers
+  hosts: 51.20.254.144
   remote_user: ec2-user
   become: yes
   tasks:
