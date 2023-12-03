@@ -14,3 +14,6 @@
         dest: "/var/artifact"
         force: yes
       become: yes
+    - name: Extract the tgz file
+      ansible.builtin.shell:
+        cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact"
