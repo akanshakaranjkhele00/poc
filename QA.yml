@@ -15,9 +15,9 @@
         dest: "/var/artifact"
         force: yes
       become: yes
-    # - name: Extract the tgz file
-    #   ansible.builtin.shell:
-    #     cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
+    - name: Extract the tgz file
+      ansible.builtin.shell:
+        cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
     # - name: Set permissions on Frontend directory
     #   command: sudo chmod 777 /var/artifact/poc/Frontend
     #   become: yes
