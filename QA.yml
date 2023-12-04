@@ -1,6 +1,6 @@
 ---
 - name: Deploy Artifact from Nexus to QA
-  hosts: webserver
+  hosts: webservers
   remote_user: ec2-user
   become: yes
   tasks:
@@ -24,7 +24,7 @@
     # - name: Set permissions on Frontend directory
     #   command: sudo chmod 777 /var/artifact/poc/Backend
     #   become: yes
-    # - name: Install Dependency for Next.js 
+    # - name: Install Dependency for Next.js
     #   command: sudo npm install
     #   args:
     #     chdir: /var/artifact/poc/Frontend
@@ -42,8 +42,7 @@
     #   async: 3600
     #   poll: 0
 
-      
-    # - name: Install Dependency for Nest.js 
+    # - name: Install Dependency for Nest.js
     #   command: npm install
     #   args:
     #     chdir: /var/artifact/poc/Backend
@@ -63,4 +62,3 @@
     #     chdir: /var/artifact/poc/Backend
     #   async: 3600
     #   poll: 0
-
