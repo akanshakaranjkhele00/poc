@@ -4,17 +4,17 @@
   remote_user: ec2-user
   become: yes
   tasks:
-    - name: Install PM2 process manager
-      npm:
-        name: pm2
-        global: yes
-      become: yes
-    # - name: Download artifact from Nexus(Backend)
-    #   get_url:
-    #     url: "http://51.20.74.221:8081/repository/myorg-raw-hosted-repo/app.tar.gz"
-    #     dest: "/var/artifact"
-    #     force: yes
+    # - name: Install PM2 process manager
+    #   npm:
+    #     name: pm2
+    #     global: yes
     #   become: yes
+    - name: Download artifact from Nexus
+      get_url:
+        url: "http://51.20.74.221:8081/repository/myorg-raw-hosted-repo/app.tar.gz"
+        dest: "/var/artifact"
+        force: yes
+      become: yes
     # - name: Extract the tgz file
     #   ansible.builtin.shell:
     #     cmd: "tar -xvzf /var/artifact/app.tar.gz -C /var/artifact/poc"
