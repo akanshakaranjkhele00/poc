@@ -1,0 +1,2 @@
+[webservers]
+13.50.5.110 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
