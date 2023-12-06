@@ -23,7 +23,7 @@ async function bootstrap() {
 
   
   const corsOptions: CorsOptions = {
-    origin: '*', 
+    origin: 'http://13.53.33.52:3001/', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, 
   };
