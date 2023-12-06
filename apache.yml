@@ -1,99 +1,99 @@
-# ---
-# - name: Install Node.js and npm on Red Hat-based systems
-#   hosts: webservers
-#   become: yes
-#   tasks:
-#     - name: Install PM2 process manager
-#       npm:
-#         name: pm2
-#         global: yes
-#       become: yes
-#     - name: Install Git on CentOS/RHEL
-#       become: yes
-#       yum:
-#         name: git
-#         state: present
-#     - name: Clone the Next.js and Nest.js repositories
-#       git:
-#         repo: https://github.com/akanshakaranjkhele00/poc.git
-#         dest: /var/www/nextjs
-#         force: yes
-#       become: yes
-#     - name: Set permissions on Frontend directory
-#       command: sudo chmod 777 /var/www/nextjs/Frontend
-#       become: yes
-#     - name: Set permissions on Backend directory
-#       command: sudo chmod 777 /var/www/nextjs/Backend
-#       become: yes
-#     - name: Install Next.js and Nest.js project dependencies
-#       command: npm install
-#       args:
-#         chdir: /var/www/nextjs/Frontend
-#     - name: Build Next.js project
-#       command: npm run build
-#       become: yes
-#       args:
-#         chdir: /var/www/nextjs/Frontend
-#       async: 3600
-#       poll: 0
-#     - name: Start the Next.js application
-#       command: npm run dev
-#       args:
-#         chdir: /var/www/nextjs/Frontend
-#       async: 3600
-#       poll: 0
+---
+- name: Install Node.js and npm on Red Hat-based systems
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install PM2 process manager
+      npm:
+        name: pm2
+        global: yes
+      become: yes
+    - name: Install Git on CentOS/RHEL
+      become: yes
+      yum:
+        name: git
+        state: present
+    - name: Clone the Next.js and Nest.js repositories
+      git:
+        repo: https://github.com/akanshakaranjkhele00/poc.git
+        dest: /var/www/nextjs
+        force: yes
+      become: yes
+    - name: Set permissions on Frontend directory
+      command: sudo chmod 777 /var/www/nextjs/Frontend
+      become: yes
+    - name: Set permissions on Backend directory
+      command: sudo chmod 777 /var/www/nextjs/Backend
+      become: yes
+    - name: Install Next.js and Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Frontend
+    - name: Build Next.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Frontend
+      async: 3600
+      poll: 0
+    - name: Start the Next.js application
+      command: npm run dev
+      args:
+        chdir: /var/www/nextjs/Frontend
+      async: 3600
+      poll: 0
 
-#     - name: Install  Nest.js project dependencies
-#       command: npm install
-#       args:
-#         chdir: /var/www/nextjs/Backend
-#       async: 3600
-#       poll: 0
-#     - name: Build Nest.js project
-#       command: npm run build
-#       become: yes
-#       args:
-#         chdir: /var/www/nextjs/Backend
-#       async: 3600
-#       poll: 0
-#     - name: Run Next.js project
-#       command: npm run start
-#       become: yes
-#       args:
-#         chdir: /var/www/nextjs/Backend
-#       async: 3600
-#       poll: 0
+    - name: Install  Nest.js project dependencies
+      command: npm install
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+    - name: Build Nest.js project
+      command: npm run build
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
+    - name: Run Next.js project
+      command: npm run start
+      become: yes
+      args:
+        chdir: /var/www/nextjs/Backend
+      async: 3600
+      poll: 0
 
    
-    #     NPM_CONFIG_REGISTRY_USERNAME: "npm-deploy-user1"
-    #     NPM_CONFIG_REGISTRY_PASSWORD: "Admin@123"
+        NPM_CONFIG_REGISTRY_USERNAME: "npm-deploy-user1"
+        NPM_CONFIG_REGISTRY_PASSWORD: "Admin@123"
    
-    # - name: npm init(Frontend)
-    #   command: sudo npm init -y
-    #   become: true
-    #   args:
-    #     chdir: /var/www/nextjs/Frontend/.next
+    - name: npm init(Frontend)
+      command: sudo npm init -y
+      become: true
+      args:
+        chdir: /var/www/nextjs/Frontend/.next
 
-    # - name: copy package .json file
-    #   ansible.builtin.copy:
-    #     src: /var/www/nextjs/package.json
-    #     dest: /var/www/nextjs/Frontend/.next/package.json
-    #     remote_src: yes
+    - name: copy package .json file
+      ansible.builtin.copy:
+        src: /var/www/nextjs/package.json
+        dest: /var/www/nextjs/Frontend/.next/package.json
+        remote_src: yes
 
-    # - name: Publish Next.js Package(Frontend)
-    #   command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
-    #   become: true
-    #   args:
-    #     chdir: /var/www/nextjs/Frontend/.next
+    - name: Publish Next.js Package(Frontend)
+      command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
+      become: true
+      args:
+        chdir: /var/www/nextjs/Frontend/.next
 
-    # - name: npm init(Backend)
-    #   command: sudo npm init -y
-    #   become: true
-    #   args:
-    #     chdir: /var/www/nextjs/Backend/dist
+    - name: npm init(Backend)
+      command: sudo npm init -y
+      become: true
+      args:
+        chdir: /var/www/nextjs/Backend/dist
 
-    # - name: Publish Next.js Package(Backend)
-    #   command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
-    #   become: true
-    #   args:
-    #     chdir: /var/www/nextjs/Backend/dist
+    - name: Publish Next.js Package(Backend)
+      command: sudo npm publish --registry http://51.20.74.221:8081/repository/myorg-npm-hosted-repo/
+      become: true
+      args:
+        chdir: /var/www/nextjs/Backend/dist
