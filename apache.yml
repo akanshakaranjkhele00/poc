@@ -65,8 +65,8 @@
       poll: 0
 
    
-        NPM_CONFIG_REGISTRY_USERNAME: "npm-deploy-user1"
-        NPM_CONFIG_REGISTRY_PASSWORD: "Admin@123"
+        # NPM_CONFIG_REGISTRY_USERNAME: "npm-deploy-user1"
+        # NPM_CONFIG_REGISTRY_PASSWORD: "Admin@123"
    
     - name: npm init(Frontend)
       command: sudo npm init -y
