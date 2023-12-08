@@ -8,4 +8,9 @@ module.exports = {
     apiKey: "http://13.53.33.52:3000/",
     productKey: "http://13.53.33.52:3000/products/name",
   },
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    headers: ['Accept', 'Content-Type'],
+  },
 };
