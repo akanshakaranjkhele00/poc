@@ -24,6 +24,11 @@
     - name: Set permissions on Frontend directory
       command: sudo chmod 777 /var/artifact/poc/Backend
       become: yes
+    - name: Replace new file to the target folder
+      ansible.builtin.copy:
+        src: /var/artifact/next.config.js
+        dest: /var/artifact/poc/Frontend/next.config.js
+        remote_src: yes
     - name: Install Dependency for Next.js
       command: sudo npm install
       args:
